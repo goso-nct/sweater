@@ -5,6 +5,26 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-    <p th:text="${message}" />
+    <div>Новое сообщение:</div>
+    <form method="post" action="add">
+    	<input name="text" type="text" placeholder="Текст">
+    	<input name="tag"  type="text" placeholder="Тэг">
+    	<button type="submit">Добавить</button>
+    </form>
+    <div th:utext="${pageMsgOne}">msg</div>
+
+    <div>Фильтр по тэгу:</div>
+    <form method="post" action="filter">
+    	<input name="filter" type="text" placeholder="Тэг">
+    	<button type="submit">Найти</button>
+    </form>
+    
+    <div>Список сообщений:</div>
+    <div th:each="m : ${messages}">
+    	<b th:utext="${m.id}">id</b>
+    	<span th:utext="${m.text}">text</span>
+    	<i th:utext="${m.tag}">tag</i>
+    </div>
+    
 </body>
 </html>
